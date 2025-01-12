@@ -121,71 +121,72 @@ Stay informed with instant updates through email and SMS notifications.
 ## Models
 | **Model Name**   |
 |------------------|
-| Notification     |
-| Offer            |
-| Order            |
-| Post             |
+| Border       |
+| ChatMessages |
+| Customer     |
+| Contract     |
+|  Review      |
 
 
 ## Extra endpoint
 
-| **HTTP Method** | **Relative Path**                                    | **Service Method**                |
+| **HTTP Method** | **Relative Path**                                    | **Cotnroller*                |
 |-----------------|------------------------------------------------------|-----------------------------------|
-| POST            | `/broker-rate-customer/{orderId}`                    | `brokerRateCustomer`              |
-| POST            | `/customer-rate-broker/{orderId}`                    | `customerReviewBroker`            |
-| PUT             | `/broker-update-review-customer/{reviewId}`          | `updateBrokerRating`              |
-| PUT             | `/customer-update-review-broker/{reviewId}`          | `updateCustomerReview`            |
-| GET             | `/broker-reviews/{brokerId}`                         | `allReviewsOnCustomBroker`        |
-| GET             | `/customer/{customerId}/reviews`                     | `allReviewsOnCustomer`            |
-| GET             | `/customer/{customerId}/average-rating`              | `allAverageOnCustomer`            |
-| POST            | `/add-carrier/{orderId}`                             | `addCarrier`                      |
-| PUT             | `/update-status/{deliveryId}`                        | `updateStatus`                    |
-| POST            | `/track-air-shipment`                                | `trackAirShipment`                |
-| POST            | `/track-sea-container`                               | `trackSeaContainer`               |
-| POST            | `/track-by-carrier/{deliveryId}/{orderId}`           | `trackByCarrier`                  |
-| PUT             | `/cancel-order/{orderId}`                            | `cancelOrder`                     |
-| PUT             | `/cancel-order-broker/{orderId}`                     | `cancelOrderBroker`               |
-| GET             | `/my-orders`                                         | `myOrders`                        |
-| GET             | `/order-details/customer/{orderId}`                  | `orderDetailsForCustomer`         |
-| GET             | `/order-details/broker/{orderId}`                    | `orderDetailsForBroker`           |
-| GET             | `/my-orders-as-broker`                               | `myOrdersAsBroker`                |
-| POST            | `/upload-multiple/{postId}`                          | `uploadMultipleFiles`             |
-| GET             | `/get-files/{postId}`                                | `getFilesByPostAndUser`           |
-| GET             | `/get-files-broker/{postId}/{customerId}`            | `getFilesByPostAndUserForBroker`  |
-| GET             | `/download/{offerId}/{documentId}`                   | `downloadFile`                    |
-| GET             | `/download-for-customer/{postId}/{documentId}`        | `downloadFileForCustomer`         |
-| POST            | `/calculate-cbm`                                     | `calculateCbm`                    |
+| POST            | `/create-subscription-post"`                         | `subscription-post`               |
+| GET             | `/get-all-subscription-posts`                        | `subscription-post`               |
+| PUT             | `/create-subscription-post-for-broker/{brokerId}`    |`subscription-post`                |
+| GET             | `/posts-for-broker"`                                 | `subscription-post`               |
+| GET             | `/my-posts`                                          | `Post`                            |
+| GET             | `/posts-for-broker             `                     | `subscription-post`               |
+| GET             | `Get Customer's Subscription Posts`                  | `subscription-post`               |
+| POST            | `/create-sub-offer`                                  | `Offer`                           |
+| PUT             | `/accept-offer-for-subscription-post/{offerId}`      | `Offer`                           |
+| Get             | `/offer-statistics`                                  | `Offer`                           |
+| GET             | `general-post-statistics`                            | `Post`                            |
+| GET             | `by-category-shipment-type-country`                  | `Post`                            |
+| GET             | `by-category-and-country`                            | `Post`                            |
+| GET             | ` Get all posts by shipment type`                    | `Post`                            |
+| GET             | `Get all posts by country of origin`                 | `Post`                            |
+| GET             | `Get all posts by category`                          | `Post`                            |
+| GET             | `Get all posts by border name`                       |`Post`                             |
+| GET             | `getCustomerWithRental`                              | `Contract`                        |
+| GET             | `getbroker-rentals`                                  | `Contract`                        |
+| GET             | `broker-with-rentals`                                | `Contract`                        |
+| PUT             | `read-my-notifications/mark-as-read`                 | `Notfication`                     |
+| POST            | `/register`                                          | `Customer `                       |
+| GET             | `get Offer Statistics For Broker `                   | ` CustomBroker `                  |
+| GET             | `get Review Statistics For Broker`                   | ` CustomBroker `                  |
+
+
+##Use Email for notifications
 
 ---
 
 ### DTO Files
 
-| **Folder**   | **Type**   | **Name**               |
-|--------------|------------|------------------------|
-| IN           | Offer      | OfferDTO              |
-| IN           | Offer      | OfferForManyOrder     |
-| IN           | Offer      | OfferWithDeliveryDTO  |
-| IN           | Post       | AddressDTO            |
-| IN           | Post       | CbmDTO                |
-| IN           | Post       | ChatMessagesDTO       |
-| IN           | Post       | CustomerDTO           |
-| OUT          | Post       | PostDTO               |
-| OUT          | Post       | SubscriptionPostDTO   |
-| OUT          | Post       | AddressDTO            |
-| OUT          | Post       | BorderDTO             |
-| OUT          | Post       | BrokerRentalsDTO      |
+| **Folder**   | **Type**           | **Name**               |
+|--------------|--------------------|---------------------|
+| IN           |CustomsBroker       | CustomsBrokerDTO    |
+| IN           | Delivery           | DeliveryDTO         |
+| IN           | RequiredDocument   | RequiredDocumentDTO |
+| IN           | ReviewBroker       | ReviewBrokerDTO     |
+| OUT          | Post               | CbmResponseDTO      |
+| OUT          | ChatMessages       | ChatMessagesDTO     |
+| OUT          | Cotract            | ContractDTO         |
+| OUT          | CustomBroker       | CustomBrokerDTO     |
+| OUT          |CustomBroker        |CustomBrokerFilterDTO|
+| OUT          | CustomBroker       | CustomBrokerForAdminDTO  |
+
 
 
 ## Testing Frameworks  
-- **JUnit** –  Used for testing, repository layer validation.  
+- **JUnit** –  Used for testing, Service layer validation.  
 
 ## Live version
 
 You can see it working [here](https://replit.com/@salmotiry/Bayan)
 
 
-
-Feel free to check the [issues page](https://github.com/salemALmotiry/Bayan/issues).
 
 ### Built With
 This project was built using:
